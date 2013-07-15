@@ -1,0 +1,57 @@
+
+
+.register-table
+{
+    margin: 0 auto;
+    padding:10px;
+    text-align:center;
+}
+
+.register-table td,  .register-table tr 
+{
+    padding: 5px;
+    font-family: Verdana;
+    font-size: 12px;
+    text-align:left;
+}
+
+ .register-table th
+ {
+    font-family: Verdana;
+    font-size: 13px;
+    font-weight:normal;
+    text-align:left;
+ }
+
+input
+{
+    padding-left:15px;
+    font-size: 12px;
+    margin-left:10px;
+}
+
+.jqx-combobox-input {
+     padding-left:15px;
+    font-size: 22px;
+}
+
+fieldset {
+    margin: 0 auto;
+    text-align: center;
+    width: 30%;
+}   
+
+.logo
+{
+    font-family: Vivaldi; 
+    font-size: 40px; 
+    color:ActiveCaption;
+    margin:0;
+}
+
+legend {
+    font-style: italic;
+    font-weight: bold;
+    color: ActiveCaption;
+    text-align: left;
+}
