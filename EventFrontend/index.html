@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Event Form</title>
+
+    <script type="text/javascript" src="resources/js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="resources/js/angular.js"></script>
+    <script src="resources/js/app.js"></script>
+
+</head>
+<body>     
+
+    <h1>Actio Solution</h1>
+
+    <h3>Event Management</h3>
+
+    <fieldset ng-app="appModule">
+        <legend><strong>Event Form</strong></legend>
+        <div ng-controller="EventCtrl">
+            <table>
+                <tr>
+                    <th>Event Name:</th>
+                    <td>
+                        <input type="text" id="name" ng-model="events.name" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>Time Occurred:</th>
+                    <td>
+                        <input ng-model="events.date" id="date"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Event Description:</th>
+                    <td>
+                        <input ng-model="events.description" type="text" id="description" size="30" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>Event Categories:</th>
+                    <td>
+                        <select id="categories">
+                            <option ng-repeat="cat in events.category" value="{{cat.id}}">{{cat.description}}</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            {{events.name}}
+        </div>
+
+
+    </fieldset>
+
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            
+
+        });
+
+
+
+    </script>
+
+</body>
+</html>

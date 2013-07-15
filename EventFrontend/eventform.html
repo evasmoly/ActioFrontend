@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Event Form</title>
+    <link rel="stylesheet" href="resources/css/actio.css" type="text/css" />
+    <link rel="stylesheet" href="resources/jqwidgets/styles/jqx.base.css" type="text/css" />
+
+    <script src="resources/js/customui.js"></script>
+    <script src="resources/js/app.js"></script>
+
+    <script type="text/javascript" src="resources/jqwidgets/settheme.js"></script>
+    <script type="text/javascript" src="resources/jqwidgets/gettheme.js"></script>
+    <script type="text/javascript" src="resources/js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="resources/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="resources/jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="resources/jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="resources/jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="resources/jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="resources/jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="resources/jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="resources/jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="resources/jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="resources/jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="resources/js/json2.js"></script>
+    <script type="text/javascript" src="resources/js/knockout-2.2.1.js"></script>
+
+</head>
+<body>
+
+    <h1 class="logo">Actio Solutions</h1>
+
+    <h3 style="text-align: center; font-style: italic;">Event Management System</h3>
+    <div style="position: fixed; top: 10px; right: 10px;">
+        <label style="vertical-align: top;">Select Theme: </label>
+        <div id="themeId" style="display: inline-block;"></div>
+    </div>
+    <br style="clear: both;" />
+
+
+    <fieldset>
+        <legend>Event Form</legend>
+        <table class="register-table">
+            <tr>
+                <th>Event Name:</th>
+                <td>
+                    <input type="text" id="name" />
+                </td>
+            </tr>
+            <tr>
+                <th>Date Occurred:</th>
+                <td>
+                    <div id="date"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>Time Occurred:</th>
+                <td>
+                    <div id="time"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>Event Description:</th>
+                <td>
+                    <input type="text" id="description" size="30" />
+                </td>
+            </tr>
+            <tr>
+                <th>Event Categories:</th>
+                <td>
+                    <div id="category"></div>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var theme = getTheme();
+            var width, height
+
+            AplyCSSTheme();
+
+
+            EventModel();
+
+            DropDownTheme("themeId", theme);
+
+            $("#name").jqxInput({ value: Event.name, placeHolder: "Enter Event", height: height, width: width, minLength: 1, theme: theme });
+            $("#date").jqxDateTimeInput({ value: Event.date, width: width, height: height, theme: theme });
+            $("#time").jqxDateTimeInput({ value: Event.date, width: '280px', height: height, formatString: 'T', showCalendarButton: false, theme: theme });
+            $("#description").jqxInput({ value: Event.description, width: width, height: height, theme: theme });
+
+            $('#date').on('valuechanged', function (event) {
+
+            });
+
+            //var source =
+            //    {
+            //        datatype: "json",
+            //        datafields: [
+            //            { name: 'name' },
+            //            { name: 'description' },
+            //            { name: 'date' },
+            //            { name: 'id', map: 'category>id' },
+            //            { name: 'description', map: 'category>description' }
+            //        ],
+            //        url: 'http://localhost:8080/eventmanagement/rest/events',
+            //        async: false
+            //    };
+            //var dataAdapter = new $.jqx.dataAdapter(source);
+
+            $("#category").jqxDropDownList({ selectedIndex: 0, source: Event.category, displayMember: "description", valueMember: "id", width: width, height: height, theme: theme });
+
+            function AplyCSSTheme() {
+                width = '250';
+                height = '25';
+
+            }
+            //add padding left for all input controls css
+            $("fieldset :input").each(function (index, value) { $(this).css("padding-left", "10px") });
+
+        });
+
+
+
+
+    </script>
+
+</body>
+</html>
